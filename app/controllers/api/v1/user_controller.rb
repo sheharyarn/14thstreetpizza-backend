@@ -8,14 +8,7 @@ class Api::V1::UserController < Api::V1::V1Controller
 			status: 'successful',
 			user: {
 				name: @user.fb_name,
-				fbid: @user.fb_userid,
-				notifications: @user.notifications
-					.only(:content, :data, :read).reverse.take(5)
-					.map { |n| {
-						:content  => n.content,
-						:data 	  => n.data,
-						:read 	  => n.read.to_s
-					}}	 	
+				fbid: @user.fb_userid
 			}
 		)
 	end
